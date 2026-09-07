@@ -1,0 +1,18 @@
+{
+  "gold": {
+    "price": 4477.0,
+    "chg_5d": -0.0,
+    "chg_1m": 5.5,
+    "high_52w_note": "near record"
+  },
+  "btc": {
+    "price": 79758.0,
+    "chg_5d": 3.2
+  },
+  "usdinr": 94.47,
+  "nifty": {
+    "price": 23898.0,
+    "chg_5d": -0.8
+  },
+  "gold_inr_10g": 135979.0
+}

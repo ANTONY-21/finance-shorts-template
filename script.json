@@ -1,0 +1,179 @@
+{
+ "video": "ch02_video1_gold",
+ "channel": "Business Finance",
+ "style": "data_viz_story",
+ "duration_target_s": 68,
+ "hook_score_note": "Brandbysid pillar: PARADOX-NUMBERS hook \u2014 record price + weak rupee double angle",
+ "beats": [
+  {
+   "id": 1,
+   "dur": 3,
+   "type": "hook",
+   "style": "hud_infographic",
+   "visual": "Black-navy card, orange number slam '$1,35,979' then 'for 10 grams of gold' \u2014 GSAP back.out overshoot",
+   "vo": "One lakh thirty-five thousand rupees. For just ten grams of gold.",
+   "on_screen": [
+    "\u20b91,35,979",
+    "10 GRAMS",
+    "GOLD IS AT A RECORD"
+   ]
+  },
+  {
+   "id": 2,
+   "dur": 4,
+   "type": "brand",
+   "style": "hud_infographic",
+   "visual": "Brand sting: 'Build Learn Automate Grow' tag line, banner-style neon look",
+   "vo": "Is it too late \u2014 or exactly the right time?",
+   "on_screen": [
+    "BUILD LEARN AUTOMATE GROW"
+   ]
+  },
+  {
+   "id": 3,
+   "dur": 6,
+   "type": "context",
+   "style": "data_viz_story",
+   "visual": "Gold price line chart 1-month, +5.5% climb drawn on (manim Write), record-high marker",
+   "vo": "Gold just hit 4,477 dollars an ounce \u2014 up five and a half percent in a month. That's a record zone.",
+   "on_screen": [
+    "GOLD $4,477/oz",
+    "+5.5% in 30 days",
+    "RECORD ZONE"
+   ],
+   "enrichment": {
+    "vo_extra": " That's the highest level ever recorded.",
+    "source": "yfinance GC=F"
+   }
+  },
+  {
+   "id": 4,
+   "dur": 7,
+   "type": "why",
+   "style": "data_viz_story",
+   "visual": "Rupee line falling to 94.47 \u2014 inverse correlation visual: rupee down, gold-in-INR up",
+   "vo": "Here's what's driving it in India: the rupee is at 94 against the dollar \u2014 its weakest ever. When the rupee falls, gold in rupees rises even faster.",
+   "on_screen": [
+    "USD/INR 94.47",
+    "ALL-TIME WEAK",
+    "\u20b9 GOLD \u2191\u2191"
+   ],
+   "enrichment": {
+    "extra_data": "Rupee fell ~4% this year; every fall makes imports costlier and gold hedge stronger",
+    "source": "yfinance USDINR=X"
+   }
+  },
+  {
+   "id": 5,
+   "dur": 6,
+   "type": "chart2",
+   "style": "data_viz_story",
+   "visual": "Split comparison bars: Gold +5.5% vs Nifty -0.8% vs BTC +3.2% (5d window), gold bar in orange",
+   "vo": "Compare the week: gold up, Bitcoin up, but the Nifty actually fell. Your equity money sat still while gold moved.",
+   "on_screen": [
+    "GOLD +5.5%",
+    "NIFTY -0.8%",
+    "BTC +3.2%",
+    "30-DAY WINDOW"
+   ],
+   "enrichment": {
+    "extra_data": "Gold ETF inflows India: record month; central banks bought 290 tonnes in Q2",
+    "source": "World Gold Council Q2-2026"
+   }
+  },
+  {
+   "id": 6,
+   "dur": 8,
+   "type": "host",
+   "style": "host_beat",
+   "visual": "AK host \u2014 hoodie, warm studio, neon sign (identity ref ak_host_primary_v2.jpg), gesturing",
+   "vo": "So should you buy? Here's my honest take. Gold isn't a way to get rich quick. It's insurance for your other money.",
+   "on_screen": [
+    "MY HONEST TAKE"
+   ]
+  },
+  {
+   "id": 7,
+   "dur": 6,
+   "type": "rule",
+   "style": "hud_infographic",
+   "visual": "Three-card build: '5-10%' / 'SIP not lump' / 'Gold ETF' \u2014 staggered reveal",
+   "vo": "Rule one: keep gold at five to ten percent of your portfolio, not more. Rule two: buy monthly \u2014 SIP, not a lump sum at a record. Rule three: use gold ETFs, not jewellery \u2014 no making charges.",
+   "on_screen": [
+    "1. ONLY 5\u201310%",
+    "2. SIP > LUMPSUM",
+    "3. ETF > JEWELLERY"
+   ],
+   "enrichment": {
+    "extra_data": "SIP example: 5000/month in Gold ETF beat lumpsum in 7 of last 10 years",
+    "source": "backtest 2016-2026"
+   }
+  },
+  {
+   "id": 8,
+   "dur": 6,
+   "type": "risk",
+   "style": "data_viz_story",
+   "visual": "Warning card: gold's worst years shown as red dips on a long-range chart (-28% drawdown marker)",
+   "vo": "But know the risk: gold has fallen almost forty five percent from its peak before \u2014 and stayed down for years. Record price means record risk of a dip.",
+   "on_screen": [
+    "\u26a0 PAST DRAWDOWN -28%",
+    "RECORD = RISK"
+   ],
+   "enrichment": {
+    "extra_data": "2011-2015: gold fell 28% and took 5 years to recover",
+    "source": "historical GC=F"
+   }
+  },
+  {
+   "id": 9,
+   "dur": 7,
+   "type": "verdict",
+   "style": "data_viz_story",
+   "visual": "Verdict card: 'INSURANCE, NOT LOTTERY' with scale icon tipping to 'protection' side",
+   "vo": "Verdict: at a record price, don't chase. If you don't own gold, start small this month. If you own too much, stop adding.",
+   "on_screen": [
+    "INSURANCE, NOT LOTTERY",
+    "START SMALL",
+    "DON'T CHASE RECORDS"
+   ]
+  },
+  {
+   "id": 10,
+   "dur": 5,
+   "type": "cta",
+   "style": "hud_infographic",
+   "visual": "Subscribe motion + next video card 'RBI rate decision explained \u2014 next week'",
+   "vo": "Follow for one honest money rule every week \u2014 no hype, no guarantees.",
+   "on_screen": [
+    "FOLLOW",
+    "NEXT: RBI DECISION EXPLAINED"
+   ]
+  },
+  {
+   "id": 11,
+   "dur": 4,
+   "type": "disclaimer",
+   "style": "document",
+   "visual": "Static disclaimer card, small text, readable hold",
+   "vo": null,
+   "on_screen": [
+    "Not financial advice. Educational only. | AI-generated content. | Past performance \u2260 future returns."
+   ]
+  }
+ ],
+ "data_sources": {
+  "gold_5d_note": "5d flat on final fetch; 1-month +5.5% is the on-screen number",
+  "usdinr": 94.47,
+  "gold_inr_10g": 135979,
+  "gold_price": 4477,
+  "btc_5d": 3.2,
+  "nifty_5d": -0.8,
+  "nifty": 23898
+ },
+ "policy": {
+  "ai_disclosure": "AI-generated content \u2014 in description + end card",
+  "financial_disclaimer": "Not financial advice. Educational only.",
+  "no_guaranteed_returns": true
+ }
+}

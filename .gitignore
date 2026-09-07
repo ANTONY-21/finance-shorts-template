@@ -1,0 +1,11 @@
+out/
+vo_ak_v4/
+cards_v6/
+charts_v6/
+recordings/site2/
+host/
+audio/*.wav
+*.mp4
+*.wav
+*.png
+!cards_v6_placeholder
