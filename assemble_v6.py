@@ -4,7 +4,8 @@ clone-hold, NEVER loop), concat, VO placement at exact beat starts, music bed, l
 kinetic captions (2-3 words per chip). Renders BOTH 9:16 vertical and 16:9 horizontal."""
 import json, os, subprocess, math
 
-BASE = '/opt/kinocut-work/ch02_video1'
+import os, sys
+BASE = os.environ.get('VIDEO_BASE', sys.argv[1] if len(sys.argv) > 1 else '/opt/kinocut-work/ch02_video1')
 FPS = 30
 
 def sh(cmd, timeout=900):
@@ -103,8 +104,28 @@ def kinetic_captions(cfg, timeline, out_ass):
         if not s['vo']:
             continue
         segments, _ = model.transcribe(s['vo'], word_timestamps=True)
-        words = [{"w": w.word.strip(), "start": w.start, "end": w.end}
-                 for seg in segments for w in seg.words]
+        seg_words = [x for seg in segments for x in seg.words]
+        raw_words = [w.word.strip() for w in seg_words]
+        # word-level merge: "1" + ".26000" → "126,000"; digit+fraction splits → decimals
+        merged = []
+        skip_next = False
+        for j, wd in enumerate(raw_words):
+            if skip_next:
+                skip_next = False
+                continue
+            if wd in ("1", "$79") and j + 1 < len(raw_words) and raw_words[j+1].startswith("."):
+                nxt = raw_words[j+1]
+                if wd == "1" and nxt == ".26000":
+                    merged.append("126,000")
+                elif wd == "$79" and nxt.startswith(","):
+                    merged.append("$79,000")
+                else:
+                    merged.append(wd + nxt)
+                skip_next = True
+                continue
+            merged.append(wd)
+        words = [{"w": wd, "start": seg_words[k].start, "end": seg_words[k].end}
+                 for k, wd in enumerate(merged)]
         # group into chips of 2-3 words
         i = 0
         while i < len(words):
@@ -114,8 +135,10 @@ def kinetic_captions(cfg, timeline, out_ass):
             end = s['start'] + chunk[-1]['end']
             text = " ".join(x['w'] for x in chunk)
             text = text.replace(" %", "%")  # whisper splits '30 %' → rejoin
-            # whisper mis-transcription corrections (finance terms)
-            for bad, good in (("ATFs", "ETFs"), ("ATF", "ETF"), ("jewelry", "jewellery")):
+            # whisper mis-transcription corrections (finance terms + numerals)
+            for bad, good in (("ATFs", "ETFs"), ("ATF", "ETF"), ("jewelry", "jewellery"),
+                              ("1 .26000", "126,000"), ("$79 ,000", "$79,000"),
+                              ("5 .5 %", "5.5%"), ("2 -5 %", "2-5%"), ("22 .4 %", "22.4%")):
                 text = text.replace(bad, good)
             events.append((start, max(end, start + 0.45), text))
             i += n
