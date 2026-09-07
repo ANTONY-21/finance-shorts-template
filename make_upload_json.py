@@ -95,11 +95,17 @@ def live_keywords(asset, emotion):
         return []
 
 def topic_facts(video_dir):
-    """Source-locked facts from the DB (never invent numbers)."""
+    """Source-locked facts (never invent numbers). Prefers the video dir's own
+    source_line.txt; falls back to the topic DB only when the dir name maps to a topic."""
     try:
         lines = json.load(open(f'{video_dir}/script_lines.json'))
     except Exception:
         lines = []
+    # explicit per-video source line wins (custom/story runs)
+    src_file = f'{video_dir}/source_line.txt'
+    if os.path.exists(src_file):
+        src = open(src_file).read().strip()
+        return lines, (None, None, None, src)
     # asset from dir name
     asset = os.path.basename(video_dir).split('_',1)[1].replace('_',' ') if '_' in os.path.basename(video_dir) else 'finance'
     c = sqlite3.connect(f'{ENG}/finance_topics.db')
