@@ -22,15 +22,25 @@ def wrap(d, t, f, maxw):
         if d.textbbox((0,0), test, font=f)[2] <= maxw: cur = test
         else: rows.append(cur); cur = w
     if cur: rows.append(cur)
-    return rows[:4]
+    return rows
 
+KICKER_MAP = {"hook": "THE PATTERN", "number": "THE NUMBER", "title": "THE QUESTION",
+              "context": "THE BACKDROP", "compare": "THE COMPARISON", "take": "HONEST TAKE",
+              "risk": "THE RISK", "verdict": "THE VERDICT", "cta": "JOIN THE CLUB"}
 def card(name, kicker, kicker_col, body, body_col=WHITE):
     img = Image.new('RGB', (W,H), NAVY); d = ImageDraw.Draw(img)
     d.rectangle([0,0,W,8], fill=ORANGE)
-    ctext(d, 160, kicker.upper()[:24], font(46), kicker_col)
-    y = 340
-    for row in wrap(d, body, font(52), W-120):
-        ctext(d, y, row, font(52), body_col); y += 84
+    label = KICKER_MAP.get(kicker, kicker.replace("rule ", "RULE "))
+    ctext(d, 160, label.upper()[:24], font(46), kicker_col)
+    # adaptive font: shrink until the whole body fits (never truncate)
+    for sz in (52, 46, 40, 36, 32, 28):
+        rows = wrap(d, body, font(sz), W-120)
+        if len(rows) * (sz + 32) <= 620:
+            y = 340
+            f = font(sz)
+            for row in rows:
+                ctext(d, y, row, f, body_col); y += sz + 32
+            break
     d.text((60, H-70), "Sources on screen · Not financial advice", font=font(22, False), fill=GREY)
     img.save(f'{out}/{name}.jpg', quality=92)
 
