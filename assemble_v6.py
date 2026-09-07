@@ -30,7 +30,15 @@ def build(aspect, cfg, outname):
         slot = round(slot, 3)
         visual = b['visual']
         seg = f"{tmp}/seg_{b['id']:02d}.mp4"
-        if visual.endswith(('.jpg', '.png')):
+        # prefer animated card mp4 when it exists (daily_cards v1.5)
+        cand = visual.rsplit('.',1)[0] + '.mp4'
+        import os as _os
+        if _os.path.exists(cand) and '/cards_v6/' in visual:
+            visual = cand
+        if visual.endswith('.mp4') and '/cards_v6/' in visual:
+            # animated card: re-encode to slot length (slow the 3s animation across slot via tpad-clone)
+            sh(f"ffmpeg -y -v error -stream_loop -1 -i '{visual}' -t {slot:.3f} -vf scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},format=yuv420p -an -c:v libx264 -preset fast -crf 19 '{seg}'")
+        elif visual.endswith(('.jpg', '.png')):
             # zoompan on static image at target WxH
             zr = "min(zoom+0.0006,1.12)"
             vf = (f"scale={W*2}:{H*2},zoompan=z='{zr}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
