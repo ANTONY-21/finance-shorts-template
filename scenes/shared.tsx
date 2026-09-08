@@ -90,12 +90,12 @@ export const Ravi: React.FC<{
       )}
       {/* torso + arms (torso tucks below desk line; desk occludes) */}
       <Box x={30} y={150} w={200} h={250} color={BLUE} r={14} />
-      <Box x={-6} y={165} w={40} h={150} color={CARD} r={10} />
-      <Box x={226} y={165 - armRaise * 60} w={40} h={150} color={CARD} r={10}
-        style={{ transform: `rotate(${-armRaise * 40}deg)`, transformOrigin: 'top center' }} />
+      <Box x={8} y={185} w={44} h={150} color={CARD} r={10} />
+      <Box x={218} y={185} w={44} h={150} color={CARD} r={10}
+        style={{ transform: `rotate(${-armRaise * 45}deg)`, transformOrigin: 'top right' }} />
       {/* thumb-up hand when raised */}
       {armRaise > 0.5 && (
-        <Box x={226 + 26} y={165 - 90} w={18} h={26} color={CARD} r={5} />
+        <Box x={218 + 6} y={185 - 18} w={18} h={26} color={CARD} r={5} />
       )}
     </div>
   );
@@ -139,24 +139,39 @@ export const Phone: React.FC<{ value: string; green?: boolean; sub?: string }> =
 );
 
 // Wall calendar (on the WALL), highlight week option.
-export const Calendar: React.FC<{ highlight?: boolean }> = ({ highlight = false }) => (
-  <>
-    <Box x={480} y={80} w={140} h={170} color={CREAM} r={6} />
-    <div style={{ position: 'absolute', left: 480, top: 80, width: 140, height: 170,
-      padding: 12, fontFamily: 'monospace', color: INK }}>
-      <div style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>SEP</div>
-      <div style={{ fontSize: 11, lineHeight: 1.7, opacity: 0.75 }}>
-        {['M T W T F S S', '1  2  3  4  5  6  7', '8  9 10 11 12 13 14',
-          '15 16 17 18 19 20 21'].map((row, i) => (
-          <div key={i} style={{
-            background: highlight && i === 3 ? GOLD : 'transparent',
-            borderRadius: 3, width: 'fit-content',
-          }}>{row}</div>
-        ))}
+// Coffee cup ON the desk.
+// Stamped rule card (drops in with a little overshoot).
+// Big centered kicker text (word wrap safe).
+// pass, wall calendar must agree). month: 'SEP'|'NOV'|'JAN'; highlightRow 0-3.
+const CAL_GRIDS: Record<string, string[]> = {
+  SEP: ['M T W T F S S', '1  2  3  4  5  6  7', '8  9 10 11 12 13 14',
+        '15 16 17 18 19 20 21'],
+  NOV: ['M T W T F S S', '3  4  5  6  7  8  9', '10 11 12 13 14 15 16',
+        '17 18 19 20 21 22 23'],
+  JAN: ['M T W T F S S', '5  6  7  8  9 10 11', '12 13 14 15 16 17 18',
+        '19 20 21 22 23 24 25'],
+};
+export const Calendar: React.FC<{ highlight?: boolean; month?: string; highlightRow?: number }> =
+  ({ highlight = false, month = 'SEP', highlightRow = 3 }) => {
+  const grid = CAL_GRIDS[month] || CAL_GRIDS.SEP;
+  return (
+    <>
+      <Box x={480} y={80} w={140} h={170} color={CREAM} r={6} />
+      <div style={{ position: 'absolute', left: 480, top: 80, width: 140, height: 170,
+        padding: 12, fontFamily: 'monospace', color: INK }}>
+        <div style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 8 }}>{month}</div>
+        <div style={{ fontSize: 11, lineHeight: 1.7, opacity: 0.75 }}>
+          {grid.map((row, i) => (
+            <div key={i} style={{
+              background: highlight && i === highlightRow ? GOLD : 'transparent',
+              borderRadius: 3, width: 'fit-content',
+            }}>{row}</div>
+          ))}
+        </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 // Coffee cup ON the desk.
 export const Cup: React.FC = () => (

@@ -68,7 +68,10 @@ export const RaviStory: React.FC = () => {
   return (
     <Camera frame={frame} zoom={zoom} cx={cx} cy={cy}>
       {/* wall + calendar */}
-      {b.scene !== 'rule_cards' && <Calendar highlight={b.scene === 'market_crash_monitor' || b.scene === 'phone_portfolio_drop'} />}
+      {(b.scene === 'ravi_desk_calm' || b.scene === 'market_crash_monitor' || b.scene === 'phone_portfolio_drop' || b.scene === 'panic_vs_world') &&
+        <Calendar highlight={b.scene === 'market_crash_monitor' || b.scene === 'phone_portfolio_drop'} month="SEP" highlightRow={3} />}
+      {b.scene === 'time_recovery' && <Calendar highlight month="NOV" highlightRow={1} />}
+      {b.scene === 'phone_recovery_cta' && <Calendar month="JAN" highlightRow={0} />}
 
       {/* scene-specific overlays */}
       {(b.scene === 'ravi_desk_calm') && <Kicker text="₹50,000 in an index fund" y={980} />}
