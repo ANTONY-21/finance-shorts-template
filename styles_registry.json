@@ -1,0 +1,291 @@
+{
+ "_meta": {
+  "version": "1.1",
+  "created": "2026-09-01",
+  "purpose": "STYLE-FIRST pipeline routing. Every video picks its style(s) FIRST, then this registry routes to the tool+skill. Permanent fix for default-tool bias across all 16+ channels.",
+  "rule": "STYLE FIRST, TOOL SECOND. No component gets built without checking this registry + preflight_arsenal.py --live.",
+  "updated": "2026-09-04: channel style_slug wiring + 6 new style types + doc_drop/data_viz_story READY"
+ },
+ "styles": {
+  "hud_infographic": {
+   "desc": "Dark charcoal cards, neon HUD, numbers as heroes, polarity colors",
+   "reference_channels": [
+    "Codacus",
+    "Cloud-Codes"
+   ],
+   "tool": "manim",
+   "skill": null,
+   "status": "READY",
+   "channels": [
+    "ai_news",
+    "business_finance",
+    "crypto"
+   ]
+  },
+  "vox_motion_graphics": {
+   "desc": "Hand-drawn overlays, archival imagery, kinetic highlight boxes",
+   "reference_channels": [
+    "Vox"
+   ],
+   "tool": "hyperframes",
+   "skill": "hyperframes-animation",
+   "status": "TOOL_READY_UNBUILT",
+   "channels": [
+    "ai_news",
+    "geopolitics",
+    "business_finance"
+   ]
+  },
+  "kinetic_typography": {
+   "desc": "Beat-synced text, word-pop captions, typography as the visual",
+   "reference_channels": [
+    "shorts\u901a\u7528"
+   ],
+   "tool": "hyperframes",
+   "skill": "hyperframes-animation",
+   "status": "TOOL_READY_UNBUILT",
+   "channels": [
+    "all"
+   ]
+  },
+  "whiteboard_explainer": {
+   "desc": "Draw-on whiteboard, marker strokes, progressive reveal",
+   "tool": "manim",
+   "skill": null,
+   "status": "TOOL_READY_UNBUILT",
+   "channels": [
+    "education",
+    "tutorials"
+   ]
+  },
+  "papercraft_stop_motion": {
+   "desc": "Layered paper diorama, pop-up book reveal",
+   "tool": "paper_style.py (procedural PIL, zero GPU)",
+   "skill": "papercraft-stop-motion-explainer",
+   "status": "READY",
+   "channels": [
+    "kids",
+    "education"
+   ],
+   "skill_path": "/opt/hermes/skills/video-styles (paper-cutout-animation)",
+   "note": "procedural torn-paper variant live 2026-09-07; wan2gp diorama variant still unbuilt"
+  },
+  "product_3d_turntable": {
+   "desc": "3D product rotation, material showcase",
+   "tool": "hyperframes + three.js",
+   "skill": "threejs",
+   "status": "SKILL_INSTALLED_UNBUILT",
+   "channels": [
+    "affiliate",
+    "ecommerce"
+   ],
+   "skill_path": "/opt/hermes/skills/creative (p5js/threejs skills)"
+  },
+  "screen_recording_zoompan": {
+   "desc": "Real UI captures with zoom highlights",
+   "tool": "playwright + ffmpeg",
+   "skill": null,
+   "status": "READY",
+   "channels": [
+    "tutorials",
+    "github_demo"
+   ]
+  },
+  "data_viz_story": {
+   "desc": "Animated charts as the narrative",
+   "tool": "antvis mcp (to wire) / manim",
+   "skill": null,
+   "status": "READY",
+   "channels": [
+    "business_finance",
+    "crypto",
+    "markets"
+   ]
+  },
+  "document_drop": {
+   "desc": "Documents/papers/tweets full-frame with highlight sweeps",
+   "reference_channels": [
+    "Cloud-Codes"
+   ],
+   "tool": "playwright + hyperframes",
+   "skill": null,
+   "status": "READY",
+   "channels": [
+    "ai_news",
+    "business_finance"
+   ]
+  },
+  "animated_map": {
+   "desc": "Geographic storytelling, region highlights",
+   "tool": "wan2gp + geojson/d3, manim map scenes",
+   "skill": "manim-video (map scenes)",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "ai-news",
+    "economy"
+   ],
+   "skill_path": "/opt/hermes/skills/creative (p5js/threejs skills)"
+  },
+  "kinetic_listicle": {
+   "desc": "Ordinal badges (#N), item reveals, github-demo style",
+   "reference_channels": [
+    "Vaibhav Sisinty",
+    "agency-agents reels"
+   ],
+   "tool": "reel_from_repos.py + motion graphics",
+   "skill": "screen-demo-shorts",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "tech",
+    "listicle"
+   ]
+  },
+  "split_screen_host": {
+   "desc": "Host face/concept-art split, InnoAmeen template",
+   "reference_channels": [
+    "InnoAmeen"
+   ],
+   "tool": "split_screen.py",
+   "skill": null,
+   "status": "READY",
+   "channels": [
+    "ai_news_tamil"
+   ]
+  },
+  "github_demo_reel": {
+   "desc": "README screenshots + pastel gradient + kinetic captions + comment CTA",
+   "tool": "screen-recording + zoompan + callouts (from vishnu recordings)",
+   "skill": "screen-demo-shorts, video-assembly-gates",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "tech",
+    "dev-tools"
+   ]
+  },
+  "beat_caption_mv": {
+   "desc": "Music-video style beat-reactive captions",
+   "tool": "hyperframes",
+   "skill": "music-video-subtitle-generator",
+   "status": "BUILDER_READY (skill verified at integrations/mv-subtitle-skill-confirmed)",
+   "channels": [
+    "music",
+    "storytelling"
+   ],
+   "skill_path": "/opt/hermes/skills/integrations/mv-subtitle-skill-confirmed"
+  },
+  "paper_collage": {
+   "desc": "Halftone collage, tactile stop-motion assemble (gbro-collage-broll pattern, local)",
+   "tool": "flux (stills) + ltx2 IL i2v (assemble) on wan2gp",
+   "skill": "/opt/hermes/skills/video-styles/paper-collage/PIPELINE_NOTES.md",
+   "status": "TOOL_READY",
+   "channels": [
+    "education",
+    "explainers",
+    "ai_news"
+   ],
+   "gates": "3-gate protocol: metaphor text -> collage still -> assemble video",
+   "note": "2026-09-07: Gate2 still PASS (7.5/10). Gate3 ltx2 IL assemble: end-frame matches still exactly, but mid-clip hallucinated hands/table on abstract first frame \u2014 fix: first frame with 1 element pre-placed + no-hands negative prompt + 49f. Clip: /opt/kinocut-work/two/collage_gate3.mp4"
+  },
+  "baoyu_infographic": {
+   "desc": "21 layouts x 21 styles static+animated infographics",
+   "tool": "playwright",
+   "skill": "baoyu-infographic",
+   "status": "BUILDER_READY (skill verified at creative/baoyu-infographic)",
+   "channels": [
+    "all"
+   ],
+   "skill_path": "/opt/hermes/skills/creative/baoyu-infographic"
+  },
+  "short_drama": {
+   "desc": "Multi-character acted scenes, dialogue-driven story",
+   "tool": "minimax_h3 (character consistency) + wan-animate",
+   "skill": "minimax-h3-ecosystem, local-fiction-short-pipeline",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "storytelling"
+   ],
+   "note": "shuohao-skills (Apache-2.0, 1.9K stars) = skill collection for AI short-drama: character split, outline, scenes, storyboard \u2014 candidate skill source"
+  },
+  "music_video_lyric": {
+   "desc": "Beat-reactive visuals synced to music, lyric captions",
+   "tool": "hyperframes + ffmpeg beat detect",
+   "skill": "mv-subtitle-skill-confirmed",
+   "status": "SKILL_INSTALLED_UNBUILT",
+   "channels": [
+    "music_audio"
+   ]
+  },
+  "kids_cartoon": {
+   "desc": "Bright flat 2D cartoon characters, simple motion",
+   "tool": "ti2v_2_2 / wan 2.2 + character bible",
+   "skill": "youtube-kids-channel (COPPA), paper-cutout-animation",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "kids"
+   ]
+  },
+  "multi_lang_presenter": {
+   "desc": "Presenter format, dubbed/translated VO per language",
+   "tool": "omnivoice multi-lang TTS + ltx2 2-ref host",
+   "skill": "video-host-identity, tts-voice",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "multi-language"
+   ]
+  },
+  "vlog_lifestyle_hybrid": {
+   "desc": "Host + b-roll mix, casual pacing, location text",
+   "tool": "h3 talking host + b-roll intercut (kinocut assemble)",
+   "skill": "video-host-identity, video-pipeline-ops",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "lifestyle",
+    "vlog"
+   ]
+  },
+  "ugc_ad": {
+   "desc": "User-generated ad look, product hero, native feel",
+   "tool": "homie (person+product) + shotplan multi-cut",
+   "skill": "local-ugc-ad-pipeline, media product_video",
+   "status": "SPEC_COMPLETE (tool+skill mapped, needs first build)",
+   "channels": [
+    "affiliate",
+    "ecommerce"
+   ]
+  },
+  "remotion_programmatic": {
+   "desc": "Whole video as React code; frame-perfect deterministic render; supports Three.js scenes",
+   "tool": "Remotion (npm) + playwright/chromium; zero GPU",
+   "skill": "remotion-dev/skills (NOASSERTION \u2014 write our own)",
+   "status": "TOOL_READY",
+   "channels": [
+    "tech",
+    "education",
+    "listicle"
+   ],
+   "licence": "Free License for individuals/<=3 employees \u2014 commercial OK (LICENSE.md read 2026-09-07)",
+   "note": "58.6K stars, in stars DB; strongest programmatic-video stack; next style to build"
+  },
+  "cardboard_3d_scene": {
+   "desc": "Cardboard/paper 3D diorama character scenes (the cardboard-salaryman look)",
+   "tool": "three.js (CDN) + theatre-js camera + playwright frame-seek -> ffmpeg; zero GPU",
+   "skill": "our own SKILL.md (patterns reference-read from CloudAI-X/threejs-skills, no licence = original code only)",
+   "status": "PLANNED",
+   "channels": [
+    "story",
+    "finance",
+    "education"
+   ],
+   "licence": "theatre-js Apache-2.0 clean; CloudAI-X reference-read only",
+   "note": "character consistency by construction; prototype = Ravi at desk"
+  }
+ },
+ "render_tiers": {
+  "manim": "math/data motion (styles: hud_infographic, whiteboard)",
+  "hyperframes": "web animations: GSAP/CSS/three.js, 9:16 templates (styles: vox, kinetic, listicle, document_drop)",
+  "playwright_capture": "real UI/README screenshots (styles: screen_recording, github_demo)",
+  "wan2gp": "AI b-roll/footage (styles: papercraft, collage, product_3d inputs)",
+  "archify": "architecture/flow diagrams (support layer)"
+ },
+ "selection_protocol": "1) Pick style(s) per beat from this registry by channel. 2) Run preflight_arsenal.py --live to confirm tool availability. 3) Only then build."
+}

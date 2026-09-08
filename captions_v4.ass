@@ -1,0 +1,65 @@
+[Script Info]
+ScriptType: v4.00
+PlayResX: 1280
+PlayResY: 720
+
+[V4+ Styles]
+Style: Cap,DejaVu Sans,40,&H00FFFFFF,&H00000000,&H00000000,&H7F000000,-1,0,0,0,100,100,0,0,1,2,0,50,50,35,2,1
+
+[Events]
+Dialogue: 0,0:00:00.00,0:00:01.72,Cap,,0,0,0,,1 lakh 35 thousand
+Dialogue: 0,0:00:01.72,0:00:03.58,Cap,,0,0,0,,rupees for just 10
+Dialogue: 0,0:00:03.58,0:00:04.34,Cap,,0,0,0,,grams of gold.
+Dialogue: 0,0:00:04.47,0:00:05.27,Cap,,0,0,0,,Is it too late
+Dialogue: 0,0:00:05.27,0:00:06.83,Cap,,0,0,0,,or exactly the right
+Dialogue: 0,0:00:06.83,0:00:07.33,Cap,,0,0,0,,time?
+Dialogue: 0,0:00:07.30,0:00:08.48,Cap,,0,0,0,,Goal just hit $4
+Dialogue: 0,0:00:08.48,0:00:13.26,Cap,,0,0,0,,,477 an ounce, up
+Dialogue: 0,0:00:13.26,0:00:14.98,Cap,,0,0,0,,5 .5 % in
+Dialogue: 0,0:00:14.98,0:00:16.00,Cap,,0,0,0,,a month, that is
+Dialogue: 0,0:00:16.00,0:00:16.76,Cap,,0,0,0,,a record zone.
+Dialogue: 0,0:00:16.90,0:00:18.04,Cap,,0,0,0,,Here is what is
+Dialogue: 0,0:00:18.04,0:00:19.18,Cap,,0,0,0,,driving it in India.
+Dialogue: 0,0:00:20.04,0:00:20.82,Cap,,0,0,0,,The Rupi is at
+Dialogue: 0,0:00:20.82,0:00:22.24,Cap,,0,0,0,,94 against the dollar
+Dialogue: 0,0:00:22.24,0:00:24.72,Cap,,0,0,0,,its weakest ever, when
+Dialogue: 0,0:00:24.72,0:00:26.06,Cap,,0,0,0,,the Rupi falls gold
+Dialogue: 0,0:00:26.06,0:00:28.14,Cap,,0,0,0,,in Rupi's rises even
+Dialogue: 0,0:00:28.14,0:00:28.66,Cap,,0,0,0,,faster.
+Dialogue: 0,0:00:28.95,0:00:30.35,Cap,,0,0,0,,Compare the week, gold
+Dialogue: 0,0:00:30.35,0:00:31.37,Cap,,0,0,0,,up, pit coin up,
+Dialogue: 0,0:00:31.61,0:00:32.53,Cap,,0,0,0,,but the nifty actually
+Dialogue: 0,0:00:32.53,0:00:34.29,Cap,,0,0,0,,fell. Your equity money
+Dialogue: 0,0:00:34.29,0:00:35.51,Cap,,0,0,0,,sat still while gold
+Dialogue: 0,0:00:35.51,0:00:36.01,Cap,,0,0,0,,moved.
+Dialogue: 0,0:00:36.03,0:00:37.39,Cap,,0,0,0,,Rule 1, keep gold
+Dialogue: 0,0:00:37.39,0:00:38.45,Cap,,0,0,0,,at 5 to 10
+Dialogue: 0,0:00:38.45,0:00:39.69,Cap,,0,0,0,,% of your portfolio.
+Dialogue: 0,0:00:40.19,0:00:41.79,Cap,,0,0,0,,Not more, rule 2,
+Dialogue: 0,0:00:42.23,0:00:43.85,Cap,,0,0,0,,buy monthly, sip, not
+Dialogue: 0,0:00:43.85,0:00:44.59,Cap,,0,0,0,,a lump sum at
+Dialogue: 0,0:00:44.59,0:00:45.99,Cap,,0,0,0,,a record. Rule 3,
+Dialogue: 0,0:00:46.55,0:00:48.17,Cap,,0,0,0,,use gold ATFs, not
+Dialogue: 0,0:00:48.17,0:00:49.75,Cap,,0,0,0,,jewelry, no making charges.
+Dialogue: 0,0:00:50.01,0:00:50.81,Cap,,0,0,0,,So, should you buy,
+Dialogue: 0,0:00:51.25,0:00:52.17,Cap,,0,0,0,,here is my honest
+Dialogue: 0,0:00:52.17,0:00:53.57,Cap,,0,0,0,,take, gold isn't a
+Dialogue: 0,0:00:53.57,0:00:54.35,Cap,,0,0,0,,way to get rich
+Dialogue: 0,0:00:54.35,0:00:55.79,Cap,,0,0,0,,quick, it is insurance
+Dialogue: 0,0:00:55.79,0:00:56.99,Cap,,0,0,0,,for your other money.
+Dialogue: 0,0:00:57.15,0:00:57.99,Cap,,0,0,0,,But no, the risk
+Dialogue: 0,0:00:57.99,0:00:59.47,Cap,,0,0,0,,gold has fallen almost
+Dialogue: 0,0:00:59.47,0:01:00.77,Cap,,0,0,0,,30 % from its
+Dialogue: 0,0:01:00.77,0:01:02.63,Cap,,0,0,0,,peak before and stayed
+Dialogue: 0,0:01:02.63,0:01:04.47,Cap,,0,0,0,,down for years. Record
+Dialogue: 0,0:01:04.47,0:01:05.77,Cap,,0,0,0,,price means record risk
+Dialogue: 0,0:01:05.77,0:01:06.27,Cap,,0,0,0,,of a dip.
+Dialogue: 0,0:01:06.35,0:01:07.89,Cap,,0,0,0,,verdict at a record
+Dialogue: 0,0:01:07.89,0:01:10.11,Cap,,0,0,0,,price don't chase if
+Dialogue: 0,0:01:10.11,0:01:11.13,Cap,,0,0,0,,you don't own gold
+Dialogue: 0,0:01:11.13,0:01:12.65,Cap,,0,0,0,,start small this month
+Dialogue: 0,0:01:12.65,0:01:13.57,Cap,,0,0,0,,if you own too
+Dialogue: 0,0:01:13.57,0:01:14.81,Cap,,0,0,0,,much stop adding
+Dialogue: 0,0:01:15.05,0:01:16.57,Cap,,0,0,0,,Follow for one honest
+Dialogue: 0,0:01:16.57,0:01:18.21,Cap,,0,0,0,,money rule every week,
+Dialogue: 0,0:01:18.61,0:01:19.93,Cap,,0,0,0,,no hype, no guarantees.

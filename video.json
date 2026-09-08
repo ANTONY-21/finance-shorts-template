@@ -1,0 +1,113 @@
+{
+ "music": {
+  "path": "/opt/kinocut-work/ch02_video1/audio/music_bed_v4.wav",
+  "volume": 0.1,
+  "fade_out": 2.5
+ },
+ "captions": {
+  "enabled": true,
+  "style": "FontSize=30,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=3,Bold=1,Alignment=2,MarginV=46"
+ },
+ "beats": [
+  {
+   "id": 1,
+   "label": "hook",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/hook_card_v2.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_01.wav"
+  },
+  {
+   "id": 2,
+   "label": "brand",
+   "visual": "/opt/kinocut-work/ch02_video1/media/videos/motion/1080p60/brand_sting.mp4",
+   "visual_mode": "fit",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_02.wav"
+  },
+  {
+   "id": 3,
+   "label": "gold chart",
+   "visual": "/opt/kinocut-work/ch02_video1/media/videos/charts/1080p60/beat3_gold.mp4",
+   "visual_mode": "fit",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_03.wav"
+  },
+  {
+   "id": 4,
+   "label": "rupee card",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/rupee_card_v2.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_04.wav"
+  },
+  {
+   "id": 5,
+   "label": "compare",
+   "visual": "/opt/kinocut-work/ch02_video1/media/videos/charts/1080p60/beat5_compare.mp4",
+   "visual_mode": "fit",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_05.wav"
+  },
+  {
+   "id": 6,
+   "label": "host",
+   "visual": "/opt/kinocut-work/ch02_video1/host/beat6_infinitetalk.mp4",
+   "visual_mode": "fit",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_06.wav"
+  },
+  {
+   "id": 7,
+   "label": "rule 1",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/rule1.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_07a.wav"
+  },
+  {
+   "id": 8,
+   "label": "rule 2",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/rule2.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_07b.wav"
+  },
+  {
+   "id": 9,
+   "label": "rule 3",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/rule3.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_07c.wav"
+  },
+  {
+   "id": 10,
+   "label": "risk",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/risk_card.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_08.wav"
+  },
+  {
+   "id": 11,
+   "label": "verdict",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/verdict_card.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_09.wav"
+  },
+  {
+   "id": 12,
+   "label": "cta",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/cta_card.jpg",
+   "visual_mode": "zoompan",
+   "vo": "/opt/kinocut-work/ch02_video1/vo_ak_v4/vo_10.wav"
+  },
+  {
+   "id": 13,
+   "label": "REAL site: TradingView gold",
+   "visual": "/opt/kinocut-work/ch02_video1/recordings/real_site_board.mp4",
+   "visual_mode": "fit",
+   "vo": null,
+   "min_dur": 4.6
+  },
+  {
+   "id": 14,
+   "label": "disclaimer",
+   "visual": "/opt/kinocut-work/ch02_video1/cards/disclaimer.jpg",
+   "visual_mode": "zoompan",
+   "vo": null,
+   "min_dur": 3.0
+  }
+ ]
+}

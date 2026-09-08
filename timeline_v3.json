@@ -1,0 +1,77 @@
+{
+ "timeline": [
+  {
+   "beat": 1,
+   "visual": "/opt/kinocut-work/ch02_video1/cards/hook_card_v2.jpg",
+   "vo": "vo_ak_v3/vo_01.wav",
+   "dur": 3.84
+  },
+  {
+   "beat": 2,
+   "visual": "/opt/kinocut-work/ch02_video1/media/videos/motion/1080p60/brand_sting.mp4",
+   "vo": "vo_ak_v3/vo_02.wav",
+   "dur": 3.2
+  },
+  {
+   "beat": 3,
+   "visual": "/opt/kinocut-work/ch02_video1/media/videos/charts/1080p60/beat3_gold.mp4",
+   "vo": "vo_ak_v3/vo_03.wav",
+   "dur": 7.2
+  },
+  {
+   "beat": 4,
+   "visual": "/opt/kinocut-work/ch02_video1/cards/rupee_card_v2.jpg",
+   "vo": "vo_ak_v3/vo_04.wav",
+   "dur": 10.24
+  },
+  {
+   "beat": 5,
+   "visual": "/opt/kinocut-work/ch02_video1/media/videos/charts/1080p60/beat5_compare.mp4",
+   "vo": "vo_ak_v3/vo_05.wav",
+   "dur": 6.4
+  },
+  {
+   "beat": 6,
+   "visual": "/opt/kinocut-work/ch02_video1/recordings/source_board_slow.mp4",
+   "vo": "vo_ak_v3/vo_07.wav",
+   "dur": 15.52
+  },
+  {
+   "beat": 7,
+   "visual": "/opt/kinocut-work/ch02_video1/host/beat6.mp4",
+   "vo": "vo_ak_v3/vo_06.wav",
+   "dur": 6.56
+  },
+  {
+   "beat": 8,
+   "visual": "/opt/kinocut-work/ch02_video1/media/videos/motion/1080p60/rules_motion.mp4",
+   "vo": "vo_ak_v3/vo_08.wav",
+   "dur": 10.08
+  },
+  {
+   "beat": 9,
+   "visual": "/opt/kinocut-work/ch02_video1/cards/risk_card.jpg",
+   "vo": "vo_ak_v3/vo_09.wav",
+   "dur": 6.88
+  },
+  {
+   "beat": 10,
+   "visual": "/opt/kinocut-work/ch02_video1/cards/verdict_card.jpg",
+   "vo": "vo_ak_v3/vo_10.wav",
+   "dur": 4.48
+  },
+  {
+   "beat": 11,
+   "visual": "/opt/kinocut-work/ch02_video1/cards/cta_card.jpg",
+   "vo": null,
+   "dur": 4.0
+  },
+  {
+   "beat": 12,
+   "visual": "/opt/kinocut-work/ch02_video1/cards/disclaimer.jpg",
+   "vo": null,
+   "dur": 4.0
+  }
+ ],
+ "total": 82.4
+}
