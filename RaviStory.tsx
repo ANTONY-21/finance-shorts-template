@@ -59,11 +59,20 @@ export const RaviStory: React.FC = () => {
   }
 
   // values
-  const nifty = b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta'
+  // STORY-LOGIC state machine (AK catch: beat 1 is CALM — showing the crash there
+// spoils the reveal). Monitor mirrors the story beat, each state internally consistent:
+//   calm: 24,584 ▲ +0.21% green (pre-crash level: 24,584 x (1-0.0367) = 23,682 exact)
+//   crash scenes: 23,682 ▼ -3.67% red
+//   recovery: 23,682 -> 26,200 ticking ▲ +10.6% green
+const calmNifty = 24584;
+const nifty = b.scene === 'ravi_desk_calm'
+    ? calmNifty
+    : (b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta')
     ? interpolate(lf, [0, 80], [23682, 26200], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })
-    : 23682; // NUMBER-LOCK: one price, one percentage, everywhere (AK rule)
-  const chg = b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta' ? '▲ +10.6%' : '▼ -3.67%';
-  const red = !(b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta');
+    : 23682;
+  const chg = b.scene === 'ravi_desk_calm' ? '▲ +0.21%'
+    : (b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta') ? '▲ +10.6%' : '▼ -3.67%';
+  const red = b.scene !== 'ravi_desk_calm' && b.scene !== 'time_recovery' && b.scene !== 'phone_recovery_cta';
 
   return (
     <Camera frame={frame} zoom={zoom} cx={cx} cy={cy}>
