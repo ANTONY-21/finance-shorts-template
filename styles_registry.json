@@ -257,27 +257,27 @@
    "desc": "Whole video as React code; frame-perfect deterministic render; supports Three.js scenes",
    "tool": "Remotion (npm) + playwright/chromium; zero GPU",
    "skill": "remotion-dev/skills (NOASSERTION \u2014 write our own)",
-   "status": "TOOL_READY",
+   "status": "READY",
    "channels": [
     "tech",
     "education",
     "listicle"
    ],
    "licence": "Free License for individuals/<=3 employees \u2014 commercial OK (LICENSE.md read 2026-09-07)",
-   "note": "58.6K stars, in stars DB; strongest programmatic-video stack; next style to build"
+   "note": "proof render done 2026-09-08: /opt/remotion-app/out/ravi.mp4 (704x1280 cardboard Ravi, vision-verified); Free License verified solo"
   },
   "cardboard_3d_scene": {
    "desc": "Cardboard/paper 3D diorama character scenes (the cardboard-salaryman look)",
-   "tool": "three.js (CDN) + theatre-js camera + playwright frame-seek -> ffmpeg; zero GPU",
+   "tool": "Remotion (proof) | Blender headless 4.0.2 (proof: blender_test 24f) | three.js+playwright",
    "skill": "our own SKILL.md (patterns reference-read from CloudAI-X/threejs-skills, no licence = original code only)",
-   "status": "PLANNED",
+   "status": "READY",
    "channels": [
     "story",
     "finance",
     "education"
    ],
    "licence": "theatre-js Apache-2.0 clean; CloudAI-X reference-read only",
-   "note": "character consistency by construction; prototype = Ravi at desk"
+   "note": "3 zero-GPU stacks all proven; skill cardboard-scene-render in video-styles"
   }
  },
  "render_tiers": {
