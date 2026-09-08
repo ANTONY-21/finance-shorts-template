@@ -1,0 +1,41 @@
+{
+ "title": "Arjun's Bitcoin Panic",
+ "style": "cardboard_3d_scene",
+ "template": "ravi_story_v12",
+ "size": {"w": 704, "h": 1280, "fps": 30},
+ "source": "yfinance BTC-INR 2026-09-08: 6mo high 7,796,196 (May 11), low 5,553,204 (Jun 30), now 7,426,772. Drop -28.8%, recovery +33.7% from low, still -4.7% below high. 100k at high = 71,230 at low = 95,261 now. Topic: finance_topics.db id 149 (bitcoin comeback cycle, score 0.946).",
+ "visual_tool_map": {
+   "b1_desk_calm": "MY MONEY graph 0->100,000 on monitor (portfolio mode, script=salary+investment)",
+   "b2_crash": "BTC ticker red on monitor + phone -28,770 + calendar SEP yellow week",
+   "b3_panic": "comparison cards BTC -28.8% / GOLD -11.6% / NIFTY -3.3% (from highs)",
+   "b4_rules": "3 rule cards",
+   "b5_time_recovery": "ticking recovery graph + calendar NOV",
+   "b6_cta": "phone 95,261 + thumbs-up + calendar JAN"
+ },
+ "beats": [
+  {"id": "b1", "scene": "ravi_desk_calm", "monitor_mode": "portfolio",
+   "vo": "Arjun is twenty-four. First job in Bengaluru. He put one lakh rupees into Bitcoin — at the worst possible moment. He just did not know it yet.",
+   "numbers": {"invested": 100000, "btc_inr_high": 7796196}},
+  {"id": "b2", "scene": "market_crash_monitor", "monitor_mode": "nifty_crash",
+   "vo": "By June, Bitcoin had fallen twenty-nine percent — from seventy-eight lakh to fifty-five and a half lakh rupees. His one lakh became seventy-one thousand.",
+   "numbers": {"high": 7796196, "low": 5553204, "drop_pct": -28.8, "portfolio_low": 71230}},
+  {"id": "b3", "scene": "panic_vs_world", "monitor_mode": "nifty_crash",
+   "vo": "Gold had barely moved. The stock market barely dipped. Everyone online said the same thing: sell before it goes to zero. Arjun opened the app forty times a day.",
+   "numbers": {"btc_dd": -28.8, "gold_dd": -11.6, "nifty_dd": -3.3}},
+  {"id": "b4", "scene": "rule_cards", "monitor_mode": "nifty_crash",
+   "vo": "He did not sell. Not because he was brave — because he remembered three rules. Rule one: only invest what you can watch drop by thirty percent. Rule two: crypto is a ten-year bet, not a ten-day bet. Rule three: never check the price more than once a day.",
+   "numbers": {}},
+  {"id": "b5", "scene": "time_recovery", "monitor_mode": "recovery",
+   "vo": "He did nothing. That was the whole move. Months passed — the calendar flipped — and Bitcoin climbed back to seventy-four lakh rupees. His seventy-one thousand became ninety-five thousand.",
+   "numbers": {"now": 7426772, "portfolio_now": 95261, "recovery_pct": 33.7}},
+  {"id": "b6", "scene": "phone_recovery_cta", "monitor_mode": "recovery",
+   "vo": "His one lakh is not back to one lakh — it is still down five percent. But he learned the only lesson that matters: panic sells at the bottom. Patience gets paid at the top. Follow for the next story.",
+   "numbers": {"portfolio_now": 95261, "vs_invested": -4.7}}
+ ],
+ "number_lock_notes": [
+  "71230 = 100000 * 5553204/7796196 (exact: 71,230.3)",
+  "95261 = 100000 * 7426772/7796196 (exact: 95,260.6)",
+  "-28.8% high->low; +33.7% low->now; -4.7% now vs high — all from same snapshot",
+  "calendar: SEP (b1-b4 crash week) -> NOV (b5 recovery) -> JAN (b6)"
+ ]
+}

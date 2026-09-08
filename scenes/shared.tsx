@@ -95,9 +95,9 @@ export const Ravi: React.FC<{
       {/* raised forearm: ELBOW-BENT — short box angled up from the shoulder side,
           never a full-length rotating plank (AK catch 2026-09-08) */}
       {armRaise > 0.05 && (
-        <div style={{ position: 'absolute', left: 244, top: 158 - armRaise * 20,
+        <div style={{ position: 'absolute', left: 246, top: 168 - armRaise * 12,
           width: 42, height: 112,
-          transform: `rotate(${-28 - armRaise * 12}deg)`, transformOrigin: 'bottom left' }}>
+          transform: `rotate(${-18 - armRaise * 9}deg)`, transformOrigin: 'bottom left' }}>
           <Box x={0} y={0} w={42} h={112} color={CARD} r={10} />
           <Box x={11} y={-22} w={20} h={30} color={CARD} r={6} />
         </div>
@@ -139,7 +139,7 @@ export const Monitor: React.FC<{ nifty: number; chg: string; red?: boolean; mode
     ) : (
     <div style={{ position: 'absolute', left: 435, top: DESK_Y - 165, width: 230,
       fontFamily: 'monospace', fontSize: 22, color: GREEN, lineHeight: 1.4 }}>
-      NIFTY {Math.round(nifty).toLocaleString('en-IN')}<br />
+      {(globalThis as any).__NUMBERS__?.asset || 'NIFTY'} {Math.round(nifty).toLocaleString('en-IN')}<br />
       <span style={{ color: red ? RED : GREEN, fontWeight: 'bold' }}>{chg}</span>
     </div>
     )}
