@@ -53,23 +53,45 @@ export const Ravi: React.FC<{
   mood: 'happy' | 'neutral' | 'worried' | 'relieved';
   lookAt: 'phone' | 'monitor' | 'camera';
   armRaise?: number; // 0..1 thumb-up raise
-}> = ({ mood, lookAt, armRaise = 0 }) => {
+  skin?: string;
+  shirt?: string;
+  hairStyle?: 'flat' | 'spiky' | 'curly';
+  hairColor?: string;
+  glasses?: boolean;
+}> = ({ mood, lookAt, armRaise = 0,
+  skin = '#C68642', shirt = RED, hairStyle = 'flat' as const,
+  hairColor = '#1A1A1A', glasses = false }) => {
   const eyeDx = lookAt === 'monitor' ? -6 : lookAt === 'phone' ? 8 : 0;
   const eyeDy = lookAt === 'camera' ? -3 : 3;
   return (
     <div style={{ position: 'absolute', left: 50, top: 510, width: 260, height: 400,
       transformOrigin: 'bottom center' }}>
-      <Box x={50} y={0} w={160} h={150} color={CARD} r={10} />
+      <Box x={50} y={0} w={160} h={150} color={skin} r={10} />
       <div style={{ position: 'absolute', left: 40, top: -18, width: 180, height: 50 }}>
         {[0,1,2,3,4,5,6].map(i => (
           <div key={i} style={{
-            position: 'absolute', left: i * 26, top: (i % 2) * 8,
-            width: 24, height: 42 + (i % 3) * 10,
-            background: '#1C1710', borderRadius: '4px 4px 0 0',
-            transform: `rotate(${(i - 3) * 4}deg)`,
+            position: 'absolute', left: i * 26,
+            top: (i % 2) * 8,
+            width: 24,
+            height: hairStyle === 'spiky' ? 26 + (i % 3) * 22
+                  : hairStyle === 'curly' ? 48
+                  : 42 + (i % 3) * 10,
+            background: hairColor, borderRadius: '4px 4px 0 0',
+            transform: hairStyle === 'curly'
+              ? `rotate(${(i - 3) * 4}deg) scale(1.15)`
+              : `rotate(${(i - 3) * (hairStyle === 'spiky' ? 7 : 4)}deg)`,
           }} />
         ))}
       </div>
+      {glasses && (
+        <div style={{ position: 'absolute', left: 78 + eyeDx * 0.4, top: 58 + eyeDy, width: 110, height: 24 }}>
+          <div style={{ position: 'absolute', left: 0, width: 34, height: 24,
+            border: `3px solid ${INK}`, borderRadius: 8, background: 'rgba(255,255,255,0.18)' }} />
+          <div style={{ position: 'absolute', left: 76, width: 34, height: 24,
+            border: `3px solid ${INK}`, borderRadius: 8, background: 'rgba(255,255,255,0.18)' }} />
+          <div style={{ position: 'absolute', left: 34, top: 10, width: 42, height: 3, background: INK }} />
+        </div>
+      )}
       {/* eyes */}
       <div style={{ position: 'absolute', left: 88 + eyeDx, top: 62 + eyeDy }}>
         <div style={{ width: 14, height: 14, background: INK, borderRadius: '50%', display: 'inline-block', marginLeft: 4 }} />
@@ -89,20 +111,51 @@ export const Ravi: React.FC<{
           background: INK, borderRadius: 2 }} />
       )}
       {/* torso + arms (torso tucks below desk line; desk occludes) */}
-      <Box x={30} y={150} w={200} h={250} color={BLUE} r={14} />
-      <Box x={8} y={185} w={44} h={150} color={CARD} r={10} />
-      <Box x={218} y={185} w={44} h={150} color={CARD} r={10} />
+      <Box x={30} y={150} w={200} h={250} color={shirt} r={14} />
+      <Box x={8} y={185} w={44} h={150} color={shirt} r={10} />
+      <Box x={218} y={185} w={44} h={150} color={shirt} r={10} />
       {/* raised forearm: ELBOW-BENT — short box angled up from the shoulder side,
           never a full-length rotating plank (AK catch 2026-09-08) */}
       {armRaise > 0.05 && (
         <div style={{ position: 'absolute', left: 246, top: 168 - armRaise * 12,
           width: 42, height: 112,
           transform: `rotate(${-18 - armRaise * 9}deg)`, transformOrigin: 'bottom left' }}>
-          <Box x={0} y={0} w={42} h={112} color={CARD} r={10} />
+          <Box x={0} y={0} w={42} h={112} color={shirt} r={10} />
           <Box x={11} y={-22} w={20} h={30} color={CARD} r={6} />
         </div>
       )}
     </div>
+  );
+};
+
+
+// SceneBackdrop — per-story setting variation (AK: 'Why same pattern story'):
+// 'bedroom_night' = dark wall + window with moon + poster; default = Ravi's plain wall.
+export const SceneBackdrop: React.FC<{ variant?: string }> = ({ variant }) => {
+  if (variant !== 'bedroom_night') return null;
+  return (
+    <>
+      {/* window with moon */}
+      <div style={{ position: 'absolute', left: 530, top: 398, width: 124, height: 118,
+        background: '#10141F', border: '6px solid #3A3F4E', borderRadius: 8,
+        overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', left: 70, top: 22, width: 40, height: 40,
+          background: '#E8E4C9', borderRadius: '50%' }} />
+        {[0,1,2].map(i => (
+          <div key={i} style={{ position: 'absolute', left: 14 + i * 38, top: 96 + (i % 2) * 14,
+            width: 6, height: 6, background: '#8A93A8', borderRadius: '50%' }} />
+        ))}
+        <div style={{ position: 'absolute', left: 0, top: 62, width: '100%', height: 5,
+          background: '#3A3F4E' }} />
+      </div>
+      {/* band poster — bottom-left corner, clear of kickers/cards/bubbles */}
+      <div style={{ position: 'absolute', left: 8, top: 395, width: 70, height: 100,
+        background: '#243B55', border: '4px solid #E8A54A', borderRadius: 4,
+        display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ fontFamily: 'monospace', color: '#E8A54A', fontSize: 22,
+          fontWeight: 'bold', transform: 'rotate(-6deg)' }}>₿</div>
+      </div>
+    </>
   );
 };
 
@@ -154,7 +207,8 @@ export const Phone: React.FC<{ value: string; green?: boolean; sub?: string }> =
     <Box x={230} y={DESK_Y - 150} w={90} h={150} color={INK} r={10} />
     <Box x={238} y={DESK_Y - 140} w={74} h={110} color={green ? GREEN : '#E8C27A'} r={4} />
     <div style={{ position: 'absolute', left: 234, top: DESK_Y - 115, width: 82,
-      textAlign: 'center', fontFamily: 'monospace', fontSize: 16, color: '#1A1410' }}>
+      textAlign: 'center', fontFamily: 'monospace',
+      fontSize: value.length > 7 ? 13 : 16, color: '#1A1410' }}>
       {value}
       {sub && <div style={{ fontSize: 11, marginTop: 6 }}>{sub}</div>}
     </div>

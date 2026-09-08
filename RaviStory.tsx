@@ -3,7 +3,7 @@ import { AbsoluteFill, useCurrentFrame, interpolate, Easing } from 'remotion';
 import {
   CARD, CARD_DARK, CARD_DEEP, INK, BG, BLUE, GREEN, RED, GOLD, CREAM,
   DESK_Y, W, H, stopQ, wobble, Box, Camera, Ravi, Desk, Monitor, Phone,
-  Calendar, Cup, RuleCard, Kicker,
+  Calendar, Cup, RuleCard, Kicker, SceneBackdrop,
 } from './scenes/shared';
 
 // Ravi's First Crash — 7 scenes in one composition. Beat boundaries come from
@@ -25,6 +25,7 @@ const localFrame = (frame: number, b: StoryBeat) => frame - b.start;
 
 export const RaviStory: React.FC = () => {
   const T = (globalThis as any).__STORYTEXT__ || {};
+const V = (globalThis as any).__VARIANT__ || {};
 const N = (globalThis as any).__NUMBERS__ || {
   startValue: 50000, lowValue: 48165, nowValue: 53286,
   startIndex: 23682, lowIndex: 23682, nowIndex: 26200,
@@ -53,9 +54,14 @@ const N = (globalThis as any).__NUMBERS__ || {
   if (b.scene === 'ravi_desk_calm') {
     mood = 'happy'; look = 'camera';
   } else if (b.scene === 'market_crash_monitor') {
-    // push in to monitor
-    const p = interpolate(lf, [10, 45], [1.0, 1.45], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic) });
-    zoom = zoom * (N.cameraZoomCrash || p); cx = N.cameraCxCrash || 550; cy = 760;
+    if (V.cam === 'pan_down') {
+      // Arjun style: start high on the monitor, pan DOWN to the desk+phone
+      const p = interpolate(lf, [8, 60], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic) });
+      zoom = zoom * 1.22; cx = 500; cy = 700 - p * 260;
+    } else {
+      const p = interpolate(lf, [10, 45], [1.0, 1.45], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic) });
+      zoom = zoom * (N.cameraZoomCrash || p); cx = N.cameraCxCrash || 550; cy = 760;
+    }
     mood = 'worried'; look = 'monitor';
   } else if (b.scene === 'phone_portfolio_drop') {
     const p = interpolate(lf, [5, 35], [1.0, 1.6], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic) });
@@ -93,6 +99,7 @@ const nifty = b.scene === 'ravi_desk_calm'
 
   return (
     <Camera frame={frame} zoom={zoom} cx={cx} cy={cy}>
+      <SceneBackdrop variant={V.scene} />
       {/* wall + calendar */}
       {(b.scene === 'ravi_desk_calm' || b.scene === 'market_crash_monitor' || b.scene === 'phone_portfolio_drop' || b.scene === 'panic_vs_world') &&
         <Calendar highlight={b.scene === 'market_crash_monitor' || b.scene === 'phone_portfolio_drop'} month="SEP" highlightRow={3} />}
@@ -100,7 +107,12 @@ const nifty = b.scene === 'ravi_desk_calm'
       {b.scene === 'phone_recovery_cta' && <Calendar month="JAN" highlightRow={0} />}
 
       {/* character (before desk) */}
-      <Ravi mood={mood} lookAt={look} armRaise={arm} />
+      <Ravi mood={mood} lookAt={look} armRaise={arm}
+        skin={V.skin || '#C68642'}
+        shirt={V.shirt || RED}
+        hairStyle={V.hairStyle || 'flat'}
+        hairColor={V.hairColor || '#1C1710'}
+        glasses={V.glasses || false} />
 
       {/* desk occludes torso */}
       <Desk />
@@ -111,8 +123,8 @@ const nifty = b.scene === 'ravi_desk_calm'
         <>
           <Kicker text={(T.b1 && T.b1.kicker) || "₹50,000 in an index fund"} y={330} />
           {T.b1 && T.b1.sub && (
-            <div style={{ position: 'absolute', left: 0, top: 60, width: '100%',
-              textAlign: 'center', fontFamily: 'Arial, sans-serif', fontSize: 28,
+            <div style={{ position: 'absolute', left: 0, top: 385, width: 440,
+              textAlign: 'center', fontFamily: 'Arial, sans-serif', fontSize: 26,
               fontWeight: 'bold', color: '#3A2E1E' }}>{T.b1.sub}</div>
           )}
         </>

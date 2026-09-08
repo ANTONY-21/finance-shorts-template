@@ -69,6 +69,14 @@ const TOTAL2 = acc2;
 const ArjunStoryWrapper: React.FC = () => {
   (globalThis as any).__STORY__ = story2;
   (globalThis as any).__DURATION__ = TOTAL2;
+  (globalThis as any).__VARIANT__ = {
+    scene: 'bedroom_night', cam: 'pan_down',
+    skin: '#8D5524',
+    shirt: '#0F7B6C',           // teal hoodie
+    hairStyle: 'spiky',
+    hairColor: '#0E0E0E',
+    glasses: true,
+  };
   (globalThis as any).__STORYTEXT__ = {
     b1: { kicker: "₹1,00,000 into Bitcoin", sub: "First job. Bengaluru. Age 24." },
     b2: { kicker: "-28.8% in 7 weeks", sub: "78,00,000 → 55,53,204" },
