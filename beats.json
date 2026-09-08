@@ -1,0 +1,85 @@
+{
+ "title": "Ravi's First Crash",
+ "character": "Ravi, 26, first salaried job in Mangaluru",
+ "style": "cardboard_3d_scene (Remotion)",
+ "aspect": [
+  704,
+  1280
+ ],
+ "fps": 30,
+ "source": "yfinance 2026-09-08: NIFTY 23,682.50 (-3.67% 30d); S&P 500 7,718.60 (-0.06% 30d); BANK NIFTY 56,963.75 (-1.25%); BTC $78,877 (+21.53%) | beat6-7 math: phone tick = 48165*(nifty/23682) -> 53,286 at full recovery (+6.57% vs 50k start; VO says 'fifty three thousand, up six and a half percent' = honest rounding) — number-lock verified",
+ "beats": [
+  {
+   "id": 1,
+   "scene": "ravi_desk_calm",
+   "seconds": 6.0,
+   "vo": "Ravi is twenty-six. First salary job in Mangaluru. He put fifty thousand rupees into an index fund — and honestly, he barely thought about it.",
+   "visual": "Ravi at desk, smiling, phone in hand, calendar SEP, coffee cup on desk",
+   "numbers": {
+    "portfolio": 50000
+   }
+  },
+  {
+   "id": 2,
+   "scene": "market_crash_monitor",
+   "seconds": 6.0,
+   "vo": "Then one Tuesday, the NIFTY is down three point six seven percent in a month. Twenty three thousand six hundred eighty two. Every news channel is screaming red.",
+   "visual": "zoom toward monitor: NIFTY 23,682 ▼ -3.67% red, ticker flickers",
+   "numbers": {
+    "nifty": 23682.5,
+    "nifty_30d": -3.67
+   }
+  },
+  {
+   "id": 3,
+   "scene": "phone_portfolio_drop",
+   "seconds": 6.0,
+   "vo": "He opens his phone. Forty eight thousand one hundred sixty five. He has lost one thousand eight hundred thirty five rupees. His stomach drops.",
+   "visual": "zoom to phone: ₹48,165, then ▼ ₹1,835 red overlay, Ravi frown",
+   "numbers": {
+    "portfolio_now": 48165,
+    "loss": 1835
+   }
+  },
+  {
+   "id": 4,
+   "scene": "panic_vs_world",
+   "seconds": 7.0,
+   "vo": "He wants to sell everything. But look at the wider picture — the S&P five hundred is down zero point zero six percent. Bank Nifty, only minus one point two five. This is a dip, not a collapse.",
+   "visual": "split screen: NIFTY -3.67 vs S&P -0.06 vs BANK NIFTY -1.25, cardboard comparison cards drop in",
+   "numbers": {
+    "sp500_30d": -0.06,
+    "banknifty_30d": -1.25
+   }
+  },
+  {
+   "id": 5,
+   "scene": "rule_cards",
+   "seconds": 8.0,
+   "vo": "Three rules keep him in the chair. One — a three percent dip is normal; the index has fallen ten percent or more many times and still recovered. Two — his money is in twenty five hundred companies, not one stock. Three — selling in a panic turns a paper loss into a real one.",
+   "visual": "three rule cards stamp in one by one: NORMAL / DIVERSIFIED / NEVER PANIC-SELL",
+   "numbers": {}
+  },
+  {
+   "id": 6,
+   "scene": "time_recovery",
+   "seconds": 6.0,
+   "vo": "He does nothing. That is the whole move. Months pass — the calendar flips — and the index climbs back to twenty six thousand two hundred.",
+   "visual": "calendar pages flip (SEP→APR), ticker climbs 23,682 → 26,200, Ravi smiles again",
+   "numbers": {
+    "nifty_recovered": 26200
+   }
+  },
+  {
+   "id": 7,
+   "scene": "phone_recovery_cta",
+   "seconds": 6.5,
+   "vo": "His fifty thousand is back to fifty three thousand — up six and a half percent from where he started, because he never sold. Ravi's first crash taught him the only lesson that matters: time in the market beats timing the market. Follow for the next story.",
+   "visual": "phone shows ₹53,285 green, Ravi smiles + thumbs up, CTA card",
+   "numbers": {
+    "portfolio_final": 53285,
+    "gain_pct": 6.6
+   }
+  }
+ ]
+}

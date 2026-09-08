@@ -61,7 +61,7 @@ export const RaviStory: React.FC = () => {
   // values
   const nifty = b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta'
     ? interpolate(lf, [0, 80], [23682, 26200], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })
-    : 23682 - Math.min(120, Math.floor(q / 30) * 8);
+    : 23682; // NUMBER-LOCK: one price, one percentage, everywhere (AK rule)
   const chg = b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta' ? '▲ +10.6%' : '▼ -3.67%';
   const red = !(b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta');
 
@@ -117,9 +117,12 @@ export const RaviStory: React.FC = () => {
       {/* props on desk */}
       <Monitor nifty={nifty} chg={chg} red={red} />
       <Phone
-        value={b.scene === 'phone_portfolio_drop' ? '₹48,165'
-          : b.scene === 'time_recovery' ? '₹50,900'
-          : b.scene === 'phone_recovery_cta' ? '₹53,285' : '₹50,000'}
+        value={b.scene === 'ravi_desk_calm' || b.scene === 'market_crash_monitor' ? '₹50,000'
+          : b.scene === 'time_recovery'
+            ? '₹' + Math.round(48165 * (nifty / 23682)).toLocaleString('en-IN')
+          : b.scene === 'phone_recovery_cta'
+            ? '₹' + Math.round(48165 * (26200 / 23682)).toLocaleString('en-IN')
+          : '₹48,165'}
         green={b.scene === 'phone_recovery_cta'}
         sub={b.scene === 'phone_portfolio_drop' ? '▼ ₹1,835' : undefined}
       />
