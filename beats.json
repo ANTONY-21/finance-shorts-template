@@ -14,7 +14,10 @@
    "scene": "ravi_desk_calm",
    "seconds": 6.0,
    "vo": "Ravi is twenty-six. First salary job in Mangaluru. He put fifty thousand rupees into an index fund — and honestly, he barely thought about it.",
-   "visual": "Ravi at desk, smiling, phone in hand, calendar SEP, coffee cup on desk",
+   "visual": {
+    "monitor_mode": "portfolio_graph",
+    "note": "story starts with RAVI: savings graph 0->50k, no index ticker"
+   },
    "numbers": {
     "portfolio": 50000
    }
@@ -81,5 +84,13 @@
     "gain_pct": 6.6
    }
   }
- ]
+ ],
+ "visual_tool_map": {
+  "calm": "portfolio graph on monitor (script says salary+investment, no index talk)",
+  "crash": "NIFTY ticker red + calendar SEP yellow week",
+  "panic_vs_world": "comparison cards NIFTY/BANKNIFTY/SPX",
+  "rule_cards": "3 rule cards",
+  "recovery": "ticking line graph climb + calendar NOV",
+  "cta": "thumbs-up + phone 53,286 + calendar JAN"
+ }
 }

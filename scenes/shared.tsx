@@ -115,16 +115,34 @@ export const Desk: React.FC = () => (
 );
 
 // Monitor standing on the desk, live ticker prop.
-export const Monitor: React.FC<{ nifty: number; chg: string; red?: boolean }> =
-  ({ nifty, chg, red = true }) => (
+export const Monitor: React.FC<{ nifty: number; chg: string; red?: boolean; mode?: 'nifty' | 'portfolio'; progress?: number }> =
+  ({ nifty, chg, red = true, mode = 'nifty', progress = 1 }) => (
   <>
     <Box x={400} y={DESK_Y - 200} w={300} h={200} color={CARD} r={8} />
     <Box x={420} y={DESK_Y - 180} w={260} h={140} color="#1A1410" r={4} />
+    {mode === 'portfolio' ? (
+      <div style={{ position: 'absolute', left: 435, top: DESK_Y - 165, width: 230 }}>
+        <div style={{ fontFamily: 'monospace', fontSize: 13, color: GREEN, opacity: 0.8, marginBottom: 6 }}>MY MONEY</div>
+        <svg width={230} height={80} viewBox="0 0 230 80">
+          <path d={(() => {
+            const pts = Array.from({ length: 8 }, (_, i) => {
+              const t = i / 7;
+              return (10 + t * 210).toFixed(1) + ',' + (72 - Math.pow(t, 1.6) * 58).toFixed(1);
+            });
+            return 'M' + pts.join(' L');
+          })()} fill="none" stroke="#2E8B57" strokeWidth={5} strokeLinecap="round" />
+          <circle cx={220} cy={14} r={6} fill="#2E8B57" />
+          <line x1={8} y1={74} x2={222} y2={74} stroke={GREEN} strokeWidth={2} opacity={0.35} />
+        </svg>
+        <div style={{ fontFamily: 'monospace', fontSize: 17, fontWeight: 'bold', color: GREEN, marginTop: 4 }}>₹50,000 SAVED</div>
+      </div>
+    ) : (
     <div style={{ position: 'absolute', left: 435, top: DESK_Y - 165, width: 230,
       fontFamily: 'monospace', fontSize: 22, color: GREEN, lineHeight: 1.4 }}>
       NIFTY {Math.round(nifty).toLocaleString('en-IN')}<br />
       <span style={{ color: red ? RED : GREEN, fontWeight: 'bold' }}>{chg}</span>
     </div>
+    )}
     <Box x={520} y={DESK_Y - 18} w={60} h={18} color={CARD_DEEP} r={3} />
   </>
 );

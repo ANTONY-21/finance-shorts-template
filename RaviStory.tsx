@@ -124,7 +124,8 @@ const nifty = b.scene === 'ravi_desk_calm'
       <Cup />
 
       {/* props on desk */}
-      <Monitor nifty={nifty} chg={chg} red={red} />
+      <Monitor nifty={nifty} chg={chg} red={red}
+        mode={b.scene === 'ravi_desk_calm' ? 'portfolio' : 'nifty'} />
       <Phone
         value={b.scene === 'ravi_desk_calm' || b.scene === 'market_crash_monitor' ? '₹50,000'
           : b.scene === 'time_recovery'
