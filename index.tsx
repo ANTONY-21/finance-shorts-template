@@ -69,6 +69,22 @@ const TOTAL2 = acc2;
 const ArjunStoryWrapper: React.FC = () => {
   (globalThis as any).__STORY__ = story2;
   (globalThis as any).__DURATION__ = TOTAL2;
+  (globalThis as any).__STORYTEXT__ = {
+    b1: { kicker: "₹1,00,000 into Bitcoin", sub: "First job. Bengaluru. Age 24." },
+    b2: { kicker: "-28.8% in 7 weeks", sub: "78,00,000 → 55,53,204" },
+    b3: { kicker: "THE WIDER PICTURE",
+      comments: ["sell before it goes to zero!!", "crypto is dead bro",
+                 "take your money out NOW", "it will never recover"],
+      app_counter: "App opens today: 40" },
+    b4: { kicker: "3 RULES HE FOLLOWED", rules: [
+        ["RULE 1 — THE 30% TEST", "Only invest what you can watch drop 30%."],
+        ["RULE 2 — A 10-YEAR BET", "A ten-year bet, not a ten-day bet. Zoom out."],
+        ["RULE 3 — CHECK ONCE A DAY", "Forty opens a day is panic, not investing."]] },
+    b5: { kicker: "HE DID NOTHING", sub: "That was the whole move." },
+    b6: { kicker: "STILL DOWN 5% FROM ENTRY",
+      sub: "Panic sells at the bottom. Patience gets paid at the top.",
+      cta: "FOLLOW FOR THE NEXT STORY" },
+  };
   (globalThis as any).__NUMBERS__ = {
     startValue: 100000, lowValue: 71230, nowValue: 95261,
     startIndex: 7796196, lowIndex: 5553204, nowIndex: 7426772,

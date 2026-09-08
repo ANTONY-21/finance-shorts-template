@@ -24,6 +24,7 @@ const beatAt = (frame: number): StoryBeat => {
 const localFrame = (frame: number, b: StoryBeat) => frame - b.start;
 
 export const RaviStory: React.FC = () => {
+  const T = (globalThis as any).__STORYTEXT__ || {};
 const N = (globalThis as any).__NUMBERS__ || {
   startValue: 50000, lowValue: 48165, nowValue: 53286,
   startIndex: 23682, lowIndex: 23682, nowIndex: 26200,
@@ -81,8 +82,10 @@ const N = (globalThis as any).__NUMBERS__ || {
 const calmNifty = N.calmIndex || 24584;
 const nifty = b.scene === 'ravi_desk_calm'
     ? calmNifty
-    : (b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta')
+    : b.scene === 'time_recovery'
     ? interpolate(lf, [0, N.recoveryFrames || 80], [N.lowIndex, N.nowIndex], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' })
+    : b.scene === 'phone_recovery_cta'
+    ? N.nowIndex
     : N.lowIndex;
   const chg = b.scene === 'ravi_desk_calm' ? ('▲ ' + (N.calmPct || '+0.21%'))
     : (b.scene === 'time_recovery' || b.scene === 'phone_recovery_cta') ? ('▲ ' + N.recoveryPct) : ('▼ ' + N.dropPct);
@@ -96,11 +99,31 @@ const nifty = b.scene === 'ravi_desk_calm'
       {b.scene === 'time_recovery' && <Calendar highlight month="NOV" highlightRow={1} />}
       {b.scene === 'phone_recovery_cta' && <Calendar month="JAN" highlightRow={0} />}
 
+      {/* character (before desk) */}
+      <Ravi mood={mood} lookAt={look} armRaise={arm} />
+
+      {/* desk occludes torso */}
+      <Desk />
+      <Cup />
+
       {/* scene-specific overlays */}
-      {(b.scene === 'ravi_desk_calm') && <Kicker text="₹50,000 in an index fund" y={980} />}
+      {(b.scene === 'ravi_desk_calm') && (
+        <>
+          <Kicker text={(T.b1 && T.b1.kicker) || "₹50,000 in an index fund"} y={330} />
+          {T.b1 && T.b1.sub && (
+            <div style={{ position: 'absolute', left: 0, top: 60, width: '100%',
+              textAlign: 'center', fontFamily: 'Arial, sans-serif', fontSize: 28,
+              fontWeight: 'bold', color: '#3A2E1E' }}>{T.b1.sub}</div>
+          )}
+        </>
+      )}
       {(b.scene === 'panic_vs_world') && (
         <>
-          <Kicker text="THE WIDER PICTURE" y={130} color={GOLD} />
+          <div style={{ position: 'absolute', left: 0, top: 160, width: 460,
+            textAlign: 'center', fontFamily: 'Arial, sans-serif', fontSize: 30,
+            fontWeight: 'bold', color: GOLD, letterSpacing: 2 }}>
+            {(T.b3 && T.b3.kicker) || "THE WIDER PICTURE"}
+          </div>
           {[
             { t: N.cards[0].t, v: N.cards[0].v, c: N.cards[0].c === 'RED' ? RED : N.cards[0].c, y: 210 },
             { t: N.cards[1].t, v: N.cards[1].v, c: N.cards[1].c === 'GREEN' ? GREEN : N.cards[1].c, y: 305 },
@@ -114,28 +137,50 @@ const nifty = b.scene === 'ravi_desk_calm'
       )}
       {(b.scene === 'rule_cards') && (
         <>
-          <Kicker text="3 RULES HE LEARNED" y={100} color={GOLD} />
-          <RuleCard appearFrame={b.start + 8} frame={frame} y={150} accent={GREEN}
-            title="RULE 1 — DIPS ARE NORMAL"
-            body="The index has fallen 10%+ many times. It recovered every time." />
-          <RuleCard appearFrame={b.start + 50} frame={frame} y={278} accent={GOLD}
-            title="RULE 2 — 2500 COMPANIES"
-            body="His money is spread across the whole index, not one stock." />
-          <RuleCard appearFrame={b.start + 92} frame={frame} y={405} accent={RED}
-            title="RULE 3 — NEVER PANIC-SELL"
-            body="Panic-selling makes the loss real." />
+          <Kicker text={(T.b4 && T.b4.kicker) || "3 RULES HE LEARNED"} y={75} color={GOLD} />
+          {((T.b4 && T.b4.rules) || [
+            ["RULE 1 — DIPS ARE NORMAL", "The index has fallen 10%+ many times. It recovered every time."],
+            ["RULE 2 — 2500 COMPANIES", "His money is spread across the whole index, not one stock."],
+            ["RULE 3 — NEVER PANIC-SELL", "Panic-selling makes the loss real."],
+          ]).map((r: any, i: number) => (
+            <RuleCard key={i} appearFrame={b.start + 8 + i * 42} frame={frame}
+              y={118 + i * 130} accent={[GREEN, GOLD, RED][i]}
+              title={r[0]} body={r[1]} />
+          ))}
+        </>
+      )}
+      {(b.scene === 'panic_vs_world') && T.b3 && T.b3.comments && (
+        <>
+          {T.b3.comments.slice(0, 3).map((c: string, i: number) => (
+            <div key={i} style={{ position: 'absolute', left: 300,
+              top: 505 + i * 62, padding: '6px 14px', background: CARD, borderRadius: 12,
+              fontFamily: 'Arial, sans-serif', fontSize: 17, color: INK, maxWidth: 360,
+              opacity: interpolate(lf, [20 + i * 22, 34 + i * 22], [0, 1],
+                { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }) }}>
+              💬 {c}
+            </div>
+          ))}
+          <div style={{ position: 'absolute', left: 60, top: 692, padding: '6px 14px',
+            background: '#3A2E1E', borderRadius: 10, fontFamily: 'monospace',
+            fontSize: 19, color: GOLD, opacity: interpolate(lf, [88, 102], [0, 1],
+              { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }) }}>
+            📱 {T.b3.app_counter || ''}
+          </div>
         </>
       )}
       {(b.scene === 'phone_recovery_cta') && (
-        <Kicker text="FOLLOW FOR THE NEXT STORY" y={1010} color={GOLD} />
+        <>
+          <Kicker text={(T.b6 && T.b6.cta) || "FOLLOW FOR THE NEXT STORY"} y={1010} color={GOLD} />
+          {T.b6 && T.b6.kicker && (
+            <div style={{ position: 'absolute', left: 0, top: 940, width: '100%',
+              textAlign: 'center', fontFamily: 'Arial, sans-serif', fontSize: 26,
+              fontWeight: 'bold', color: RED }}>
+              {T.b6.kicker}
+            </div>
+          )}
+        </>
       )}
 
-      {/* character (before desk) */}
-      <Ravi mood={mood} lookAt={look} armRaise={arm} />
-
-      {/* desk occludes torso */}
-      <Desk />
-      <Cup />
 
       {/* props on desk */}
       <Monitor nifty={nifty} chg={chg} red={red}

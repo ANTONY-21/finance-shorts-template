@@ -134,7 +134,7 @@ export const Monitor: React.FC<{ nifty: number; chg: string; red?: boolean; mode
           <circle cx={220} cy={14} r={6} fill="#2E8B57" />
           <line x1={8} y1={74} x2={222} y2={74} stroke={GREEN} strokeWidth={2} opacity={0.35} />
         </svg>
-        <div style={{ fontFamily: 'monospace', fontSize: 17, fontWeight: 'bold', color: GREEN, marginTop: 4 }}>₹50,000 SAVED</div>
+        <div style={{ fontFamily: 'monospace', fontSize: 17, fontWeight: 'bold', color: GREEN, marginTop: 4 }}>₹{((globalThis as any).__NUMBERS__?.startValue ?? 50000).toLocaleString('en-IN')} SAVED</div>
       </div>
     ) : (
     <div style={{ position: 'absolute', left: 435, top: DESK_Y - 165, width: 230,
