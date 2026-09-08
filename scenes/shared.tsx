@@ -91,11 +91,16 @@ export const Ravi: React.FC<{
       {/* torso + arms (torso tucks below desk line; desk occludes) */}
       <Box x={30} y={150} w={200} h={250} color={BLUE} r={14} />
       <Box x={8} y={185} w={44} h={150} color={CARD} r={10} />
-      <Box x={218} y={185} w={44} h={150} color={CARD} r={10}
-        style={{ transform: `rotate(${-armRaise * 45}deg)`, transformOrigin: 'top right' }} />
-      {/* thumb-up hand when raised */}
-      {armRaise > 0.5 && (
-        <Box x={218 + 6} y={185 - 18} w={18} h={26} color={CARD} r={5} />
+      <Box x={218} y={185} w={44} h={150} color={CARD} r={10} />
+      {/* raised forearm: ELBOW-BENT — short box angled up from the shoulder side,
+          never a full-length rotating plank (AK catch 2026-09-08) */}
+      {armRaise > 0.05 && (
+        <div style={{ position: 'absolute', left: 244, top: 158 - armRaise * 20,
+          width: 42, height: 112,
+          transform: `rotate(${-28 - armRaise * 12}deg)`, transformOrigin: 'bottom left' }}>
+          <Box x={0} y={0} w={42} h={112} color={CARD} r={10} />
+          <Box x={11} y={-22} w={20} h={30} color={CARD} r={6} />
+        </div>
       )}
     </div>
   );
@@ -176,8 +181,8 @@ export const Calendar: React.FC<{ highlight?: boolean; month?: string; highlight
 // Coffee cup ON the desk.
 export const Cup: React.FC = () => (
   <>
-    <Box x={300} y={DESK_Y - 60} w={70} h={60} color={CREAM} r={8} />
-    <Box x={318} y={DESK_Y - 74} w={34} h={16} color="#E8C27A" r={4} />
+    <Box x={150} y={DESK_Y - 60} w={70} h={60} color={CREAM} r={8} />
+    <Box x={168} y={DESK_Y - 74} w={34} h={16} color="#E8C27A" r={4} />
   </>
 );
 
